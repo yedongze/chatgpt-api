@@ -66,6 +66,7 @@ export interface ChatMessage {
   name?: string
   delta?: string
   detail?: any
+  promptTokens?: number
 
   // relevant for both ChatGPTAPI and ChatGPTUnofficialProxyAPI
   parentMessageId?: string

@@ -167,7 +167,8 @@ export class ChatGPTAPI {
       role: 'assistant',
       id: uuidv4(),
       parentMessageId: messageId,
-      text: ''
+      text: '',
+      promptTokens: 0
     }
 
     const responseP = new Promise<types.ChatMessage>(
@@ -220,6 +221,9 @@ export class ChatGPTAPI {
                     if (delta.role) {
                       result.role = delta.role
                     }
+
+                    // 增加 promptTokens 返回
+                    result.promptTokens = numTokens
 
                     onProgress?.(result)
                   }
